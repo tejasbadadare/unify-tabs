@@ -3,7 +3,7 @@ Unify Tabs by Tejas Badadare
 This is a simple Chrome extension that identifies multiple open tabs that have
 the same URL and closes all of them except one, thereby consolidating your tabs.
 
-Credits:
+Uses:
 1.  Merge Icon by Dilon Choudhury from the Noun Project
     (https://thenounproject.com/search/?q=merge&i=192537)
-2.
+2.  Chrome Extension APIs (chrome.*)
