@@ -8,7 +8,6 @@ function removeDuplicates () {
 
     console.log("Tabs array length: " + tabs.length);
 
-    var skip = [];  // List of indices of duplicates found in tabs[]
     var dupIDs = [];     // List of tabId's of duplicates found
 
     // Cycle through all tabs and check for duplicates
@@ -16,26 +15,24 @@ function removeDuplicates () {
       for (var j = 0; j < tabs.length; j++) {
         // Skip current tab when searching for duplicates
 
-        // DEBUG
-        console.log("Looking at " + j);
+        console.log("Looking at (j)" + j + "from (i) " + i);
 
         if (j == i) {
           console.log("On current("+i+") Skipping.");
-          skip.push(j);
           continue;
         }
 
-        if (skip.includes(j)) {
-          console.log("Duplicate/seen found, skipping:" + j);
-          console.log("\t" + tabs[j].url);
+        // Check for undefined object (already deleted duplicate)
+        if (!tabs[j] || !tabs[i]) {
+          console.log("On prev deleted ("+j+") Skipping.");
           continue;
         }
 
         if (tabs[i].url === tabs[j].url) {
-          console.log("New duplicate found, adding:" + j);
+          console.log("Duplicate found, adding:" + j);
           console.log("\t" + tabs[j].url);
-          skip.push(j);
           dupIDs.push(tabs[j].id);
+          delete tabs[j];
         }
       }
     }
@@ -46,5 +43,4 @@ function removeDuplicates () {
     chrome.tabs.remove(dupIDs);
 
   });
-afdasfda;
 }
