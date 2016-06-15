@@ -2,17 +2,30 @@
 <!--
 popup.html
 This is shown when the extension button is clicked.
- -->
+-->
 <html>
 
-  <head>
-    <title>Unify Tabs</title>
-    <script src="popup.js"></script>
-  </head>
+<head>
+  <title>Unify Tabs</title>
+  <style>
+  body {
+    font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+    font-size: 75%;
+  }
+  #text {
+    white-space: pre;
+    text-overflow: ellipsis;
+    overflow:hidden;
+    max-width: 800px;
+  }
+  </style>
 
-  <body>
-    <h2 id="header"> Unify current tabs? </h2>
-    <button id="activate"> Do it! </button>
-  </body>
+  <script src="popup.js"></script>
+</head>
+
+<body>
+  <h3 id="title"> Tabs removed: </h3>
+  <p id="text"> Unifying tabs... </p>
+</body>
 
 </html>
