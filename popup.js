@@ -8,7 +8,7 @@ function removeDuplicates () {
 
     console.log("Tabs array length: " + tabs.length);
 
-    var duplicates = [];  // List of indices of duplicates found in tabs[]
+    var skip = [];  // List of indices of duplicates found in tabs[]
     var dupIDs = [];     // List of tabId's of duplicates found
 
     // Cycle through all tabs and check for duplicates
@@ -19,8 +19,14 @@ function removeDuplicates () {
         // DEBUG
         console.log("Looking at " + j);
 
-        if (j == i || duplicates.includes(j)) {
-          console.log("Current("+i+")/duplicate found, skipping:" + j);
+        if (j == i) {
+          console.log("On current("+i+") Skipping.");
+          skip.push(j);
+          continue;
+        }
+
+        if (skip.includes(j)) {
+          console.log("Duplicate/seen found, skipping:" + j);
           console.log("\t" + tabs[j].url);
           continue;
         }
@@ -28,7 +34,7 @@ function removeDuplicates () {
         if (tabs[i].url === tabs[j].url) {
           console.log("New duplicate found, adding:" + j);
           console.log("\t" + tabs[j].url);
-          duplicates.push(j);
+          skip.push(j);
           dupIDs.push(tabs[j].id);
         }
       }
